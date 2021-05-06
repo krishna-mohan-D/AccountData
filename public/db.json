@@ -3,6 +3,8 @@
     {
       "id": 1, 
       "AccountName":"Retirement Portfolio",
+      "AccountNature": "AccountNature",
+      "Advisory": "Advisory",
       "AccountHolding": "Joint",
       "Type": "Trust",
       "Classification": "UTF",
@@ -11,6 +13,8 @@
     {
       "id": 2,
       "AccountName":"Retirement Portfolio",
+      "AccountNature": "AccountNature",
+      "Advisory": "Advisory",
       "AccountHolding": "Joint",
       "Type": "Trust",
       "Classification": "UTF",
@@ -19,6 +23,8 @@
     {
       "id": 3,
       "AccountName":"Retirement Portfolio",
+      "AccountNature": "AccountNature",
+      "Advisory": "Advisory",
       "AccountHolding": "Joint",
       "Type": "Trust",
       "Classification": "UTF",
@@ -27,35 +33,14 @@
     {
       "id": 4,
       "AccountName":"Retirement Portfolio",
+      "AccountNature": "AccountNature",
+      "Advisory": "Advisory",
       "AccountHolding": "Joint",
       "Type": "Trust",
       "Classification": "UTF",
       "status": "pending"
-    },
-    {
-      "id": 5,
-      "AccountName":"Retirement Portfolio",
-      "AccountHolding": "Joint",
-      "Type": "Trust",
-      "Classification": "UTF",
-      "status": "pending"
-    },
-    {
-      "id": 6,
-      "AccountName":"Retirement Portfolio",
-      "AccountHolding": "Joint",
-      "Type": "Trust",
-      "Classification": "UTF",
-      "status": "pending"
-    },
-    {
-      "id": 7,
-      "AccountName":"Retirement Portfolio",
-      "AccountHolding": "Joint",
-      "Type": "Trust",
-      "Classification": "UTF",
-      "status": "pending"
-
     }
+   
+    
   ]
 }

@@ -11,19 +11,32 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import  {useDispatch , useSelector}  from 'react-redux';
 import  {AccountData}  from '../redux/actions/index'
+import { blue } from '@material-ui/core/colors';
+import TablePagination from '@material-ui/core/TablePagination';
+
  
 const useStyles = makeStyles({
 
     table: {
-      minWidth: 650,
       
+      minWidth: 80,
+      marginRight: 40,
     },
     tableCell:{
-        fontSize: 20,
+        fontSize: 15,
+        border: 0,
     },
-    extra: {
+    tableTop: {
         marginTop: 50,
-    } 
+        marginRight: 20,
+        backgroundColor: 'white',
+        borderRadius: 25
+    } ,
+    rowStatus:{
+
+        // backgroundColor: 'whitesmoke',
+        borderRadius: 0.5,
+    }
   });
 
 
@@ -48,42 +61,59 @@ export default function AccountInfo() {
             // const [rows ,setRows] = useState([])
 
              const   rows = useSelector(state => state)
+             const [page, setPage] = React.useState(2);
+             const [rowsPerPage, setRowsPerPage] = React.useState(10);
+           
+             const handleChangePage = (event, newPage) => {
+               setPage(newPage);
+             };
+           
+             const handleChangeRowsPerPage = (event) => {
+               setRowsPerPage(parseInt(event.target.value, 10));
+               setPage(0);
+             };
                  
              console.log('store', rows);
                 return (
-                    // <div>
-                    <Container fixed>
+                   
+                    <div className={classes.tableTop}>
+                    {/* // <Container fixed> */}
 
-                        <TableContainer className={classes.extra} component={Paper}>
-                            <Table className={classes.table} aria-label="simple table">
+                        {/* // <TableContainer className={classes.extra} component={Paper}> */}
+                            <Table  style={{width: '80%'}}className={classes.table} aria-label="simple table">
                             <TableHead >
                                 <TableRow >
-                                <TableCell style={{color: 'blue'}}className={classes.tableCell}>Account Name</TableCell>
-                                <TableCell style={{color: 'blue'}}  className={classes.tableCell} align="right">Account Holding</TableCell>
-                                <TableCell style={{color: 'blue'}} className={classes.tableCell} align="right">Type</TableCell>
-                                <TableCell style={{color: 'blue'}} className={classes.tableCell} align="right">classification</TableCell>
-                                <TableCell style={{color: 'blue'}} className={classes.tableCell} align="right">status</TableCell>
+                                <TableCell style={{color: 'blue',paddingRight: '30px',borderBottom: '3px solid whitesmoke'}}className={classes.tableCell} align="center">Account Name</TableCell>
+                                <TableCell style={{color: 'blue',borderBottom: '3px solid whitesmoke'}}  className={classes.tableCell}  align="center" >Account Holding</TableCell>
+                                <TableCell style={{color: 'blue',borderBottom: '3px solid whitesmoke'}} className={classes.tableCell}  align="center">Type</TableCell>
+                                <TableCell style={{color: 'blue',borderBottom: '3px solid whitesmoke'}} className={classes.tableCell}  align="center" >Classification</TableCell>
+                                <TableCell style={{color: 'blue',borderBottom: '3px solid whitesmoke'}} className={classes.tableCell}  align="center" >Status</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {rows.length > 0 && (rows.map((row) => (
                                 <TableRow  className={classes.tableRow} key={row.id}>
-                                    <TableCell  className={classes.tableCell} component="th" scope="row">
+                                    <TableCell  className={classes.tableCell} align="center" >
                                     {row.AccountName}
+                                    <br/>
+                                    {row.AccountNature}
+                                    <br/>
+                                    {row.Advisory}
+                                  
                                     </TableCell>
-                                    <TableCell className={classes.tableCell} align="right">{row.AccountHolding}</TableCell>
-                                    <TableCell className={classes.tableCell} align="right">{row.Type}</TableCell>
-                                    <TableCell className={classes.tableCell} align="right">{row.Classification}</TableCell>
-                                    <TableCell className={classes.tableCell}     align="right">{row.status}</TableCell>
+                                    <TableCell className={classes.tableCell}  align="center">{row.AccountHolding}</TableCell>
+                                    <TableCell className={classes.tableCell}align="center" >{row.Type}</TableCell>
+                                    <TableCell className={classes.tableCell} align="center" >{row.Classification}</TableCell>
+                                    <TableCell className={classes.tableCell}   align="center">{row.status}</TableCell>
                                 </TableRow>
                                 )))}
                              
                                 {/* {rows.length} */}
                             </TableBody>
                             </Table>
-                        </TableContainer>
-                    </Container>
+                        {/* // </TableContainer>
+                    // </Container> */}
 
-                // </div>
+                 </div>
                 );
 }
